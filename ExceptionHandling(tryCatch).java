@@ -1,37 +1,45 @@
 /*
 Question:
-Create a class MyCalculator with method:
+Read two integers a and b.
 
-long power(int n, int p)
+Print:
+a / b
 
-Rules:
-1. If n < 0 or p < 0
-   throw Exception:
-   "n or p should not be negative."
-
-2. If n = 0 and p = 0
-   throw Exception:
-   "n and p should not be zero."
-
-3. Otherwise return n raised to power p.
+Handle exceptions:
+1. InputMismatchException
+2. ArithmeticException (/ by zero)
 */
 
-class MyCalculator {
+import java.util.*;
 
-    // Calculate n^p
-    long power(int n, int p) throws Exception {
+public class Solution {
 
-        // Check negative values
-        if (n < 0 || p < 0) {
-            throw new Exception("n or p should not be negative.");
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        try {
+
+            // Read two integers
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+
+            // Print division result
+            System.out.println(a / b);
+
+        }
+        catch (InputMismatchException e) {
+
+            // Invalid input
+            System.out.println("java.util.InputMismatchException");
+
+        }
+        catch (ArithmeticException e) {
+
+            // Division by zero
+            System.out.println(e);
         }
 
-        // Check both values are zero
-        if (n == 0 && p == 0) {
-            throw new Exception("n and p should not be zero.");
-        }
-
-        // Return n raised to power p
-        return (long) Math.pow(n, p);
+        sc.close();
     }
 }
